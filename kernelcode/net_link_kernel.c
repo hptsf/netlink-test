@@ -35,6 +35,8 @@ static void hello_nl_recv_msg(struct sk_buff *skb)
     res = nlmsg_unicast(nl_sk, skb_out, pid);
     if (res < 0)
         printk(KERN_INFO "Sending msg failed\n");
+
+    nlmsg_free(skb_out);
 }
 
 static int __init net_link_init(void)
