@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
     bind(sock_fd, (struct sockaddr*)&src_addr, sizeof(src_addr));
 
     memset(&dest_addr, 0, sizeof(dest_addr));
-    memset(&dest_addr, 0, sizeof(dest_addr));
     dest_addr.nl_family = AF_NETLINK;
     dest_addr.nl_pid = 0;                   /* For Linux Kernel */
     dest_addr.nl_groups = 0;                /* unicast */
@@ -52,7 +51,7 @@ int main(int argc, char *argv[])
     msg.msg_iovlen = 1;
 
     printf("Sending message to kernel\n");
-    sendmsg(sock_fd,&msg,0);
+    sendmsg(sock_fd, &msg, 0);
     printf("Waiting for message from kernel\n");
 
     /* Read message from kernel */
